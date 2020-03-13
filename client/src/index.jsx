@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Form from './components/Form.jsx';
+import Calender from './components/calendar.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -9,13 +10,13 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
-
   }
 
   render () {
     return (<div>
-      <h1>booking system</h1>
+      <title>booking system</title>
       <Form />
+      <Calender />
     </div>)
   }
 }
