@@ -1,6 +1,6 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
-//import 'react-datepicker/dist/react-datepicker-cssmodules.css'
+import calendar from './calendar.jsx';
 
 class Form extends React.Component {
   constructor(props) {
@@ -32,18 +32,14 @@ class Form extends React.Component {
 
         <div>{'Date & Time'}</div>
         <div className='calendar'>
-          {/* <DatePicker selected={this.state.startDate} onChange={date => setStartDate(date)} /> */}
-            <select className={'date'}>
-            <option>Mar 26, 2020</option>
-            <option>Mar 27, 2020</option>
-          </select>
+          <DatePicker selected={this.state.startDate} onChange={date => setStartDate(date)} />
           <div className='row'>
-            <select classname='start time'>
+            <select className='start time'>
               <option>7: 30 am</option>
               <option>8: 00 am</option>
               <option>8: 30 am</option>
             </select>
-            <select classname='end time'>
+            <select className='end time'>
               <option>9: 30 pm</option>
               <option>10: 00 pm</option>
               <option>10: 30 am</option>
@@ -52,7 +48,7 @@ class Form extends React.Component {
         </div>
 
         <div>Attendees</div>
-        <select classname='attendees'>
+        <select className='attendees'>
           <option>1 - 9 people</option>
           <option>10 -24 people</option>
           <option>25 - 39 people</option>

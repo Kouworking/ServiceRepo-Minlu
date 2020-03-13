@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css'
+require('react-datepicker/dist/react-datepicker.css')
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Calendar extends React.Component {
     return (
       <DatePicker
         selected={this.state.startDate}
-        onChange={this.handleChange}
+        onChange={this.handleChange.bind(this)}
       />
     );
   }
