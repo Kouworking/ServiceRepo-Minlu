@@ -6,10 +6,12 @@ USE bookingSys;
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
-  name VARCHAR,
-  activity VARCHAR,
-  count int,
-  email VARCHAR,
+  name VARCHAR(200),
+  activity VARCHAR(20),
+  numbers int,
+  email VARCHAR(200),
+  startTime DATETIME,
+  endTime DATETIME,
   ifAlcoho BOOLEAN,
   PRIMARY KEY (ID)
 );
