@@ -7,6 +7,7 @@ USE bookingSys;
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
   name VARCHAR(200),
+  password VARCHAR(32),
   activity VARCHAR(20),
   numbers int,
   email VARCHAR(200),

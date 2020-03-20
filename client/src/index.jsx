@@ -1,30 +1,26 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+// import $ from 'jquery';
 import Form from './components/Form.jsx';
-import Calender from './components/calendar.jsx'
-import 'react-datepicker/dist/react-datepicker-cssmodules.min.css'
-import "react-datepicker/dist/react-datepicker.css"
-require('react-datepicker/dist/react-datepicker.css')
+import times from './components/times';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: []
-    }
+      repos: [],
+    };
   }
 
-  render () {
-    return (<div>
+  // eslint-disable-next-line class-methods-use-this
+  render() {
+    return (
+    <div>
       <title>booking system</title>
-
-      <h1>booking system</h1>
-      <Form />
-
-
-
-    </div>)
+      <Form times = {times}/>
+    </div>);
   }
 }
 
