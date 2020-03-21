@@ -1,8 +1,73 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
+import styled from 'styled-components';
 import bulb from '../images/lightbulb.svg';
 import SignUp from './SignUp.jsx';
 import LogIn from './LogIn.jsx';
+
+const Remindar = styled.p`
+  font-size: 75%;
+  margin-bottom: 20px;
+`;
+
+const PricePerHour = styled.h4`
+  margin: 50px 0 0 0;
+  text-align: center;
+  font-size: 200%;
+`;
+
+const Discount = styled.div`
+  border: 1px solid #b7b7ca;
+  padding: 5px;
+  margin-bottom: 50px;
+`;
+
+const BookingSys = styled.div`
+  float: center;
+  width: auto;
+  border:1px solid #b7b7ca;
+  text-align: center;
+  margin: 30px;
+`;
+
+const FormContainer = styled.form`
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 3%;
+`;
+
+const Label = styled.label`
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  float: left;
+`;
+
+const DatePicker = styled.div`
+  float:left;
+  width: 95%;
+  margin: 5% 0px  5% 0px ;
+`;
+
+const Input = styled.input`
+  width: 96%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+`;
+
+const Select = styled.select`
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const PickDate = styled.div`
+  display: inline;
+`;
 
 class Form extends React.Component {
   constructor(props) {
@@ -83,83 +148,83 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div id='booking-system'>
-        <LogIn showLogIn = {this.state.showLogIn}
-        switchToLogin = {this.switchToLogin}/>
+      <BookingSys>
+        <LogIn showLogIn={this.state.showLogIn}
+          switchToLogin={this.switchToLogin} />
         <SignUp show={this.state.showSignUp}
-        showLogIn = {this.state.showLogIn}
-        switchToLogin = {this.switchToLogin}
+          showLogIn={this.state.showLogIn}
+          switchToLogin={this.switchToLogin}
         />
 
-        <h4 className='price-per-hour'> $75/hr </h4>
-        <p className='remindar'>4 hr min</p>
-        <div className='discount' >
+        <PricePerHour> $75/hr </PricePerHour>
+        <Remindar>4 hr min</Remindar>
+        <Discount>
           <p>8+hour discount  &nbsp;&nbsp; 15%off</p>
-        </div>
+        </Discount>
 
-        <div className='form'>
-          <label htmlFor="date-time" >{'Date & Time'}</label>
-          <div className="datePicker-container">
-            <input type="date" className='datePicker' onChange={this.handleChange2} />
-          </div>
-          <div className='row'>
-            <select className='start-time' onChange={this.handleChange2}>
-              {this.props.times.map((time, index) => (
-                <option key={index}>{time}</option>
-              ))}
-            </select>
-            <select className='end-time' value = {this.state.endTime} onChange={this.handleChangeInEnd}>
-              {this.props.times.slice(this.state.startIndex + 1).map((time, index) => (
-                <option key={index}>{time}</option>
-              ))}
-            </select>
-          </div>
+        <FormContainer>
+          <Label>{'Date & Time'}</Label>
+          <DatePicker>
+            <Input type="date" className='datePicker' onChange={this.handleChange2}></Input>
+            <PickDate>
+              <Select className='start-time' onChange={this.handleChange2}>
+                {this.props.times.map((time, index) => (
+                  <option key={index}>{time}</option>
+                ))}
+              </Select>
+              <Select className='end-time' value={this.state.endTime} onChange={this.handleChangeInEnd}>
+                {this.props.times.slice(this.state.startIndex + 1).map((time, index) => (
+                  <option key={index}>{time}</option>
+                ))}
+              </Select>
+            </PickDate>
+          </DatePicker>
 
 
-          <label htmlFor="attendee_count_input" >Attendees</label>
-          <select className="attendess-select">
+          <Label>Attendees</Label>
+          <Select className="attendess-Select">
             <option>1 - 9 people</option>
             <option>10 -24 people</option>
             <option>25 - 39 people</option>
-          </select>
-        </div>
+          </Select>
+        </FormContainer>
 
         {this.state.minHoursAlert ? (<div className="min-hours-table">
           <div className="v-top" stye={{ 'max- width': '10%' }}>
-            <img src= {bulb} alt=""/>
+            <img src={bulb} alt="" />
           </div>
-          <div className = "min-hours">
-            <div className = "min-hours-title"> 4 hour minimum</div>
-            <div className= "min-hours-content"> The host is more likely to accept if your request meets their minimum duration.</div>
+          <div className="min-hours">
+            <div className="min-hours-title"> 4 hour minimum</div>
+            <div className="min-hours-content"> The host is more likely to accept if your request meets their minimum duration.</div>
           </div>
-        </div>) : ('') }
+        </div>) : ('')}
 
 
-      <div className='price'>
-        <label >Price</label>
-        <div className="col">
-          <div className='price-detail-container'>
-          <span className='price-detail'>
-            $75.00x{(this.state.endIndex - this.state.startIndex) / 2} hours
+        <div className='price'>
+          <Label>Price</Label>
+          <div className="col">
+            <div className='price-detail-container'>
+              <span className='price-detail'>
+                $75.00x{(this.state.endIndex - this.state.startIndex) / 2} hours
             </span>
-          <span className='price-total-detail'>  ${20 * (this.state.endIndex - this.state.startIndex)}</span>
+              <span className='price-total-detail'>  ${20 * (this.state.endIndex - this.state.startIndex)}</span>
+            </div>
+            <div className='processing-price'>
+              <span className='processing'>Processing</span>
+              <span className='price-processing'>$11.88</span>
+            </div>
           </div>
-          <div className='processing-price'>
-          <span className='processing'>Processing</span>
-          <span className='price-processing'>$11.88</span>
+          <div className='total-container'>
+            <Label >Total </Label>
+            <label className='total-price'>${20 * (this.state.endIndex - this.state.startIndex) + 11.88}</label>
           </div>
         </div>
-        <div className='total-container'>
-        <label >Total </label>
-        <label className='total-price'>${20 * (this.state.endIndex - this.state.startIndex) + 11.88}</label>
-        </div>
-      </div>
 
-      <button onClick={this.hanldeClick} className='request book'> Request to Book</button>
+        <button onClick={this.hanldeClick} className='request book'> Request to Book</button>
 
-      <p className='notice'>Maria typically responds within 1 hr Cancel for free within 24 hours</p>
+        <p className='notice'>Maria typically responds within 1 hr Cancel for free within 24 hours</p>
 
-      </div >
+      </BookingSys >
     );
   }
 }
