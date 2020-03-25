@@ -17,17 +17,24 @@ const PricePerHour = styled.h4`
 `;
 
 const Discount = styled.div`
-  border: 1px solid #b7b7ca;
-  padding: 5px;
-  margin-bottom: 50px;
+  border-top: 1px solid #b7b7ca;
+  border-bottom: 1px solid #b7b7ca;
+  padding: 4px;
+  margin-bottom: 15px;
 `;
 
 const BookingSys = styled.div`
-  float: center;
-  width: auto;
+  width: 35%;
+  color:#343840;
+  font-family: Avenir-Heavy,"Helvetica Neue",Helvetica,Arial,sans-serif;
   border:1px solid #b7b7ca;
+  border-radius: 3px;
   text-align: center;
-  margin: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 25px;
+  margin-bottom:25px;
+  background-color: #D3D3D3;
 `;
 
 const FormContainer = styled.form`
@@ -38,31 +45,33 @@ const FormContainer = styled.form`
 `;
 
 const Label = styled.label`
-  max-width: 100%;
+  //max-width: 100%;
   margin-bottom: 5px;
   font-weight: 700;
-  float: left;
+  text-align: left;
 `;
 
 const DatePicker = styled.div`
-  float:left;
   width: 95%;
-  margin: 5% 0px  5% 0px ;
+  padding-bottom: 4px;
+  margin: 5px 0px  2px 0px ;
 `;
 
 const Input = styled.input`
-  width: 96%;
+  width: 50%;
   padding: 8px;
+  float:left;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
 `;
 
 const Select = styled.select`
-  width: 50%;
-  padding: 8px;
+  width: 19%;
+  margin-right: 3px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  
 `;
 
 const PickDate = styled.div`
@@ -157,9 +166,9 @@ class Form extends React.Component {
         />
 
         <PricePerHour> $75/hr </PricePerHour>
-        <Remindar>4 hr min</Remindar>
+        <Remindar>4 hours minimum</Remindar>
         <Discount>
-          <p>8+hour discount  &nbsp;&nbsp; 15%off</p>
+          <p>8+ hour discount  &nbsp;&nbsp; 15%off</p>
         </Discount>
 
         <FormContainer>
@@ -179,14 +188,12 @@ class Form extends React.Component {
               </Select>
             </PickDate>
           </DatePicker>
-
-
-          <Label>Attendees</Label>
+          {/* <Label>Attendees</Label>
           <Select className="attendess-Select">
             <option>1 - 9 people</option>
             <option>10 -24 people</option>
             <option>25 - 39 people</option>
-          </Select>
+          </Select> */}
         </FormContainer>
 
         {this.state.minHoursAlert ? (<div className="min-hours-table">
@@ -205,24 +212,25 @@ class Form extends React.Component {
           <div className="col">
             <div className='price-detail-container'>
               <span className='price-detail'>
-                $75.00x{(this.state.endIndex - this.state.startIndex) / 2} hours
+                $75.00 x {(this.state.endIndex - this.state.startIndex) / 2} hours:
             </span>
               <span className='price-total-detail'>  ${20 * (this.state.endIndex - this.state.startIndex)}</span>
             </div>
             <div className='processing-price'>
-              <span className='processing'>Processing</span>
-              <span className='price-processing'>$11.88</span>
+              <span className='processing'>Processing: </span>
+              <span className='price-processing'>$12</span>
             </div>
           </div>
           <div className='total-container'>
-            <Label >Total </Label>
-            <label className='total-price'>${20 * (this.state.endIndex - this.state.startIndex) + 11.88}</label>
+            <Label >Total: </Label>
+            <label className='total-price'>${20 * (this.state.endIndex - this.state.startIndex) + 12}</label>
           </div>
         </div>
 
         <button onClick={this.hanldeClick} className='request book'> Request to Book</button>
 
-        <p className='notice'>Maria typically responds within 1 hr Cancel for free within 24 hours</p>
+        <p className='notice'>Maria typically responds within 1 hr</p>
+        <p>Cancel for free within 24 hours</p>
 
       </BookingSys >
     );

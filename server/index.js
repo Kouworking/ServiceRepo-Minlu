@@ -33,7 +33,7 @@ app.get('/repos', (req, res) => {
   // This route should send back the top 25 repos
 });
 
-const port = 3001;
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
