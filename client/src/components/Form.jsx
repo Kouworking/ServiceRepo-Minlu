@@ -24,7 +24,7 @@ const Discount = styled.div`
 `;
 
 const BookingSys = styled.div`
-  width: 35%;
+  width: 34.5%;
   color:#343840;
   font-family: Avenir-Heavy,"Helvetica Neue",Helvetica,Arial,sans-serif;
   border:1px solid #b7b7ca;
